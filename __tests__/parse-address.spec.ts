@@ -1,7 +1,46 @@
 import assert from 'assert'
-import parser from '../address'
+import addressParser from '../address'
 
-const address = {
+describe('Parser', () => {
+  it('Properly parses addresses', () => {
+    Object.keys(testCases).forEach((addressString) => {
+      const parsed = addressParser.parseLocation(addressString)
+      assert.deepEqual(testCases[addressString], parsed)
+    })
+  })
+
+  it('Properly parses addresses', () => {
+    const cooperCity = addressParser.parseLocation(
+      '4972 SW 91st Aven, Cooper City, FL 33328, USA'
+    )
+
+    const lisaAdams = addressParser.parseLocation(
+      '925 SW 102ND TE, Pembroke Pines, FL 33025, USA'
+    )
+
+    expect(cooperCity).toEqual({
+      city: 'Cooper City',
+      state: 'FL',
+      number: '4972',
+      prefix: 'SW',
+      street: '91st',
+      type: 'Ave',
+      zip: '33328',
+    })
+
+    expect(lisaAdams).toEqual({
+      city: 'Pembroke Pines',
+      state: 'FL',
+      number: '925',
+      prefix: 'SW',
+      street: '102ND',
+      type: 'Terr',
+      zip: '33025',
+    })
+  })
+})
+
+const testCases = {
   '1005 Gravenstein Hwy 95472': {
     number: '1005',
     street: 'Gravenstein',
@@ -585,12 +624,3 @@ const address = {
     zip: '48304'
   }
 }
-
-describe('Parser', () => {
-  it('Properly parses addresses', () => {
-    Object.keys(address).forEach(function (k) {
-      const parsed = parser.parseLocation(k)
-      assert.deepEqual(address[k], parsed)
-    })
-  })
-})
