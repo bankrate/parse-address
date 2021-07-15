@@ -7,6 +7,7 @@ export const streetTypeMap = {
   annx: 'anx',
   arcade: 'arc',
   av: 'ave',
+  ave: 'ave',
   aven: 'ave',
   avenu: 'ave',
   avenue: 'ave',
