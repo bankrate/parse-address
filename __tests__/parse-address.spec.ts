@@ -34,7 +34,7 @@ describe('Parser', () => {
       number: '925',
       prefix: 'SW',
       street: '102ND',
-      type: 'Terr',
+      type: 'Ter',
       zip: '33025',
     })
   })
