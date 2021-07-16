@@ -34,7 +34,7 @@ jobs:
           - dependencies-{{ checksum "package.json" }}
       - run:
           name: Install Dependencies
-          command: '.circleci/npm-install-if-uncached'
+          command: 'sh .circleci/npm-install-if-uncached'
       - run:
           name: Unit tests
           command: npm run test
