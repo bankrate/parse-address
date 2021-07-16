@@ -27,6 +27,7 @@ jobs:
       - checkout
       - run:
           name: Unit tests
+          command: npm ci
           command: npm run test
 
   build:
