@@ -44,6 +44,11 @@ jobs:
     <<: *container_config
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Dependencies
+          command: 'bash .circleci/npm-install-if-uncached.sh'
       - run:
           name: Build project
           command: npm run build
@@ -52,6 +57,11 @@ jobs:
     <<: *container_config
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Dependencies
+          command: 'bash .circleci/npm-install-if-uncached.sh'
       - run:
           name: Authenticate npm registry
           command: echo -e "${ARTIFACTORY_REGISTRY_NAME}:_authToken=${ARTIFACTORY_WRITE_TOKEN}" > .npmrc
