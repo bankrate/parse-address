@@ -29,9 +29,6 @@ jobs:
     <<: *container_config
     steps:
       - checkout
-      - restore_cache:
-        keys:
-          - dependencies-{{ checksum "package.json" }}
       - run:
           name: Install Dependencies
           command: 'sh .circleci/npm-install-if-uncached'
