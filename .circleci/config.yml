@@ -31,7 +31,7 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: 'sh node/.circleci/npm-install-if-uncached.sh'
+          command: 'sh .circleci/npm-install-if-uncached.sh'
       - run:
           name: Unit tests
           command: npm run test
