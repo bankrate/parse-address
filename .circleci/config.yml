@@ -11,6 +11,8 @@ jobs:
     <<: *container_config
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Authenticate npm registry
           command: echo -e "${ARTIFACTORY_REGISTRY_NAME}:_authToken=${ARTIFACTORY_WRITE_TOKEN}" > .npmrc
@@ -42,9 +44,6 @@ jobs:
     <<: *container_config
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: npm install
       - run:
           name: Build project
           command: npm run build
