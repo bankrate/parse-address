@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ -d node_modules ]]
 then
   echo "Cached dependecies exist, bypassing install"
