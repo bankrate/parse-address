@@ -7,11 +7,13 @@ const addressParser = new AddressParser()
 
 describe('Parser', () => {
   it('Properly parses addresses (existing test cases)', () => {
-    Object.keys(additionalTests).forEach(runTests(existingTests))
+    const testAddresses = Object.keys(existingTests)
+    testAddresses.forEach(runTests(existingTests))
   })
 
   it('Properly parses addresses (new test cases)', () => {
-    Object.keys(additionalTests).forEach(runTests(additionalTests))
+    const testAddresses = Object.keys(additionalTests)
+    testAddresses.forEach(runTests(additionalTests))
   })
 })
 
