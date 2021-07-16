@@ -11,6 +11,7 @@ export interface ParsedAddress {
   type2?: string
   sec_unit_num?: string
   sec_unit_type?: string
+  suffix?: string
   zip?: string
   plus4?: string
 }
