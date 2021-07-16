@@ -26,8 +26,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Unit tests
+          name: Install deps
           command: npm ci
+      - run:
+          name: Unit tests
           command: npm run test
 
   build:
