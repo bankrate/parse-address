@@ -236,15 +236,15 @@ export class AddressParser {
     parts = this.normalizeAddress(parts)
 
     if (parts) {
-      parts['type2'] = parts['type2'] || ''
-      parts['type1'] = parts['type1'] || ''
+      parts.type2 = parts.type2 || ''
+      parts.type1 = parts.type1 || ''
 
-      if (parts['type2'] && !parts['type1'] || (parts['type1'] === parts['type2'])) {
-        let type = parts['type2']
+      if (parts.type2 && !parts.type1 || (parts.type1 === parts.type2)) {
+        let type = parts.type2
         type = XRegExp.replace(type, /s\W*$/, '')
 
         if (XRegExp('^' + this.addressMatch.type + '$', 'ix').test(type)) {
-          parts['type1'] = parts['type2'] = type
+          parts.type1 = parts.type2 = type
         }
       }
     }
