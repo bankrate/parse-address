@@ -191,11 +191,11 @@ export class AddressParser {
         parsed[key] = parsed[key].charAt(0).toUpperCase() + parsed[key].slice(1).toLowerCase()
     })
 
-    if (parsed['city']) {
-      parsed['city'] = XRegExp.replace(parsed['city'],
+    if (parsed.city) {
+      parsed.city = XRegExp.replace(parsed.city,
         XRegExp('^(?<dircode>' + this.addressMatch.dircode + ')\\s+(?=\\S)', 'ix'),
         function (match) {
-          return capitalize(self.directionCode[match['dircode'].toUpperCase()]) + ' '
+          return capitalize(self.directionCode[match.dircode.toUpperCase()]) + ' '
         })
     }
 
