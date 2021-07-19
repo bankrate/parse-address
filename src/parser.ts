@@ -5,6 +5,7 @@ import {
   stateCodesMap,
   directionsMap,
   streetTypeMap,
+  streetAbbrevsToShortCodeMap,
 } from './maps'
 
 import {
@@ -187,8 +188,13 @@ export class AddressParser {
     })
 
     ;['type', 'type1', 'type2'].forEach(function (key) {
-      if (key in parsed)
+      if (key in parsed) {
         parsed[key] = parsed[key].charAt(0).toUpperCase() + parsed[key].slice(1).toLowerCase()
+
+        // Map the address short code
+        const lowerCaseType = parsed[key].toLowerCase()
+        parsed[`short_street_${key}`] = self.findStreetTypeShortCode(lowerCaseType)
+      }
     })
 
     if (parsed.city) {
@@ -250,5 +256,22 @@ export class AddressParser {
     }
 
     return parts
+  }
+
+  findStreetTypeShortCode(streetType?: string): string {
+    const blankShortCode = 'BL'
+
+    if (!streetType) {
+      return blankShortCode
+    }
+
+    const matchedEntry = Object.entries(streetAbbrevsToShortCodeMap).find(
+      ([_, streetTypeString]) => {
+        // Check against singular and plural versions
+        return streetTypeString === streetType || `${streetTypeString}s` === streetType
+      }
+    )
+
+    return matchedEntry ? matchedEntry[0] : blankShortCode
   }
 }
