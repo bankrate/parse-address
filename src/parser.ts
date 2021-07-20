@@ -18,6 +18,8 @@ import {
   capitalize,
 } from './utils'
 
+XRegExp.uninstall('namespacing')
+
 export class AddressParser {
   private addressMatch: Record<string, any>
   private directionCode: Record<string, any>
