@@ -1,0 +1,12 @@
+name: "Publish Package to GitHub"
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-js-gh:
+    name: "Publish Package"
+    uses: bankrate/finserv-reusable-gha/.github/workflows/publish-js-gh.yml@main
+    with:
+      node-version: '14.x'
