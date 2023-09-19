@@ -18,9 +18,6 @@ jobs:
           name: Authenticate npm registry
           command: echo -e "${ARTIFACTORY_REGISTRY_NAME}:_authToken=${ARTIFACTORY_WRITE_TOKEN}" > .npmrc
       - run:
-          name: Update npm
-          command: '[[ -d node_modules ]] || sudo npm install -g npm@6.0.1'
-      - run:
           name: Install Dependencies
           command: '[[ -d node_modules ]] || npm ci'
       - save_cache:
