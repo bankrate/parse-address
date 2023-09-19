@@ -27,13 +27,6 @@ export class AddressParser {
   constructor() {
     this.directionCode = invert(directionsMap)
 
-    /*
-    const Street_Type_Match = {}
-    each(Street_Type,function(v,k){ Street_Type_Match[v] = XRegExp.escape(v) })
-    each(Street_Type,function(v,k){ Street_Type_Match[v] = Street_Type_Match[v] + '|' + XRegExp.escape(k) })
-    each(Street_Type_Match,function(v,k){ Street_Type_Match[k] = new RegExp( '\\b(?:' +  Street_Type_Match[k]  + ')\\b', 'i') })
-    */
-
     this.addressMatch = {
       type: flatten(streetTypeMap).sort().filter(function (v, i, arr) { return arr.indexOf(v) === i }).join('|'),
       fraction: '\\d+\\/\\d+',
