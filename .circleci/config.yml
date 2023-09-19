@@ -3,7 +3,7 @@ version: 2
 references:
   container_config: &container_config
     docker:
-      - image: circleci/node:14.5
+      - image: circleci/node:18.16
     working_directory: ~/node
 
 jobs:
