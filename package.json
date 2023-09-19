@@ -1,6 +1,6 @@
 {
   "name": "@bankrate/parse-address",
-  "version": "2.3.1",
+  "version": "2.3.0",
   "description": "US Street Address Parser",
   "main": "dist/parser.js",
   "scripts": {
